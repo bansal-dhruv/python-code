@@ -11,3 +11,5 @@ Download all folder(try over wifi as model folder may take some time)
 3 Wink-Left eye for left click.
 4 Close eye for activating Scroll Mode.
 5 Move your Head in direction of required movement.
+## Sample
+![](https://raw.githubusercontent.com/bansal-dhruv/Face_Gesture/blob/master/Sample/example.gif)
