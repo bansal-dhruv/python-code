@@ -18,7 +18,7 @@ Download all folder(try over wifi as model folder may take some time)
 5 Move your Head in direction of required movement.
 ```
 ## Sample
-![](https://github.com/bansal-dhruv/Face_Gesture/blob/master/Sample/example.gif)
+<img src="Sample/example.gif">
 
 
 
