@@ -2,8 +2,10 @@
 This is controlling mouse features through your face.
 
 # How to run
+```bash
 Download all folder(try over wifi as model folder may take some time)
-### Run command on cmd  python gesture_mouse.py
+##### Run command on cmd  python gesture_mouse.py
+```
 
 # command for gestures
 ```bash
