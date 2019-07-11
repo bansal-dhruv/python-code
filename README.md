@@ -1,6 +1,7 @@
 # Face_Gesture
+```bash
 This is controlling mouse features through your face.
-
+```
 # How to run
 ```bash
 Download all folder(try over wifi as model folder may take some time)
