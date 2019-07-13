@@ -15,8 +15,7 @@ WINK_AR_DIFF_THRESH = 0.04
 WINK_AR_CLOSE_THRESH = 0.19
 WINK_CONSECUTIVE_FRAMES = 10
 
-# Initialize the frame counters for each action as well as 
-# booleans used to indicate if action is performed or not
+# Intializing 
 MOUTH_COUNTER = 0
 EYE_COUNTER = 0
 WINK_COUNTER = 0
