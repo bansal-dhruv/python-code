@@ -4,7 +4,7 @@ This helps in controlling mouse functions through your face.
 ```
 # How to run
 ```bash
-Download all folder(try over wifi as model folder may take some time)
+Download all folder(try over wifi as model folder is big)
 ```
 ##### Run command on cmd  python gesture_mouse.py
 
