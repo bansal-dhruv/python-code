@@ -1,6 +1,6 @@
 # Face_Gesture
 ```bash
-This is controlling mouse features through your face.
+This helps in controlling mouse functions through your face.
 ```
 # How to run
 ```bash
