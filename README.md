@@ -17,7 +17,7 @@ Download all folder(try over wifi as model folder is big)
 4 Close eye for activating Scroll Mode.
 5 Move your Head in direction of required movement.
 ```
-## Sample
+## Sample ;)
 <img src="Sample/example.gif">
 
 
