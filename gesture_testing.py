@@ -10,7 +10,7 @@ import math
 MOUTH_AR_THRESH = 0.3
 MOUTH_AR_CONSECUTIVE_FRAMES = 15
 EYE_AR_THRESH = 0.19
-EYE_AR_CONSECUTIVE_FRAMES = 15
+EYE_AR_CONSECUTIVE_FRAMES = 10
 WINK_AR_DIFF_THRESH = 0.04
 WINK_AR_CLOSE_THRESH = 0.19
 WINK_CONSECUTIVE_FRAMES = 10
@@ -148,11 +148,11 @@ while True:
  
     radians = math.atan2(nose_line[0][1]-nose_line[3][1], nose_line[0][0]-nose_line[3][0] )
     degrees = -1*math.degrees(radians) 
-    print(degrees)
+    # print(degrees)
 
     # Right click or left click
     # done !!!!!!!!!!
-    if not INPUT_MODE :
+    if (not INPUT_MODE ) or (not SCROLL_MODE) :
         if degrees<=66:
             if DEGREE_COUNTER>=5 :
                 pag.click(button='right')
@@ -170,48 +170,55 @@ while True:
         else:
             DEGREE_COUNTER=0
 
-    # Scrolling mode !!!
-    if diff_ear > WINK_AR_DIFF_THRESH:       
-        if leftEAR < rightEAR:
-            if leftEAR < EYE_AR_THRESH:
-                WINK_COUNTER += 1
-                if WINK_COUNTER > WINK_CONSECUTIVE_FRAMES:
-                    pag.click(button='left')
-                    WINK_COUNTER = 0
-        elif leftEAR > rightEAR:
-            if rightEAR < EYE_AR_THRESH:
-                WINK_COUNTER += 1
-                if WINK_COUNTER > WINK_CONSECUTIVE_FRAMES:
-                    pag.click(button='right')
-                    WINK_COUNTER = 0
-        else:
-            WINK_COUNTER = 0
-    else:
+       # if diff_ear > WINK_AR_DIFF_THRESH:       
+    #     if leftEAR < rightEAR:
+    #         if leftEAR < EYE_AR_THRESH:
+    #             WINK_COUNTER += 1
+    #             if WINK_COUNTER > WINK_CONSECUTIVE_FRAMES:
+    #                 pag.click(button='left')
+    #                 WINK_COUNTER = 0
+    #     elif leftEAR > rightEAR:
+    #         if rightEAR < EYE_AR_THRESH:
+    #             WINK_COUNTER += 1
+    #             if WINK_COUNTER > WINK_CONSECUTIVE_FRAMES:
+    #                 pag.click(button='right')
+    #                 WINK_COUNTER = 0
+    #     else:
+    #         WINK_COUNTER = 0
+    # else:
+
+    
+    # Scrolling Mode !!!!
+    # done!!!
+    if not INPUT_MODE:
         if ear <= EYE_AR_THRESH:
             EYE_COUNTER += 1
-
+            print('Eyes_closed_once')
             if EYE_COUNTER > EYE_AR_CONSECUTIVE_FRAMES:
                 SCROLL_MODE = not SCROLL_MODE
-                EYE_COUNTER = 0                
+                EYE_COUNTER = 0
+                print('Scrolling_mode_Achieved!!!')                
         else:
             EYE_COUNTER = 0
-            WINK_COUNTER = 0
+        # WINK_COUNTER = 0
+
 
     # mouth opening
     # done!!!!!
-    if mar > MOUTH_AR_THRESH:
-        MOUTH_COUNTER += 1
+    if not SCROLL_MODE:
+        if mar > MOUTH_AR_THRESH:
+            MOUTH_COUNTER += 1
 
-        if MOUTH_COUNTER >= MOUTH_AR_CONSECUTIVE_FRAMES:
-            # if the alarm is not on, turn it on
-            INPUT_MODE = not INPUT_MODE
+            if MOUTH_COUNTER >= MOUTH_AR_CONSECUTIVE_FRAMES:
+                # if the alarm is not on, turn it on
+                INPUT_MODE = not INPUT_MODE
+                MOUTH_COUNTER = 0
+                ANCHOR_POINT = nose_point
+        else:
             MOUTH_COUNTER = 0
-            ANCHOR_POINT = nose_point
-    else:
-        MOUTH_COUNTER = 0
 
-    INPUT_MODE=True
-    # movement
+
+    # movement for mouse
     if INPUT_MODE:
         cv2.putText(frame, "TAKING INPUT", (10, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, RED_COLOR, 2)
         x, y =ANCHOR_POINT
@@ -241,6 +248,8 @@ while True:
                 pag.moveRel(0, drag)
         # setAnchor(nx, ny)
         print(ANCHOR_POINT ," ", nose_point)
+        
+    # for scrolling
     if SCROLL_MODE:
         cv2.putText(frame, 'SCROLLING', (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, RED_COLOR, 2)
 
