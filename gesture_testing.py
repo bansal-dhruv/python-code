@@ -75,7 +75,6 @@ def mouth_aspect_ratio(mouth):
     # Return the mouth aspect ratio
     return mar
 
-
 # Return direction given the nose and anchor points.
 def direction(nose_point, anchor_point, w, h, multiple=1):
     nx, ny = nose_point
