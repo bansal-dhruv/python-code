@@ -1,5 +1,5 @@
 from imutils import face_utils
-#  from helper import *
+import time
 import numpy as np
 import pyautogui as pag
 import imutils
@@ -31,6 +31,7 @@ RED_COLOR = (200, 10, 10)
 GREEN_COLOR = (0, 200, 200)
 BLUE_COLOR = (255, 0, 0)
 BLACK_COLOR = (0, 0, 0)
+FUTURE = time.time()
 
 shape_predictor = "model/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
@@ -75,6 +76,7 @@ def mouth_aspect_ratio(mouth):
     # Return the mouth aspect ratio
     return mar
 
+
 # Return direction given the nose and anchor points.
 def direction(nose_point, anchor_point, w, h, multiple=1):
     nx, ny = nose_point
@@ -89,12 +91,22 @@ def direction(nose_point, anchor_point, w, h, multiple=1):
         return 'up'
     return '-'
 
+def set_FUTURE() :
+    global FUTURE
+    FUTURE = time.time() + 20
 
 def setAnchor(nx,ny):
     global ANCHOR_POINT
     ANCHOR_POINT = ( nx, ny )
 
+
 while True:
+
+    if SCROLL_MODE :
+        if FUTURE <= time.time():
+            SCROLL_MODE=False
+            print("Scroll Mode Deactivated")
+
     
     _, frame = vid.read()
     frame = cv2.flip(frame, 1)
@@ -155,14 +167,14 @@ while True:
         if degrees<=66:
             if DEGREE_COUNTER>=5 :
                 pag.click(button='right')
-                print("Right Winking!")
+                print("Right Click!")
                 DEGREE_COUNTER = 0
             else :
                 DEGREE_COUNTER+=1
         elif degrees>=96:
             if DEGREE_COUNTER>=5 :
                 pag.click(button='left')
-                print("left Winking!")
+                print("Left Click!")
                 DEGREE_COUNTER = 0
             else :
                 DEGREE_COUNTER+=1
@@ -189,14 +201,16 @@ while True:
     
     # Scrolling Mode !!!!
     # done!!!
-    if not INPUT_MODE:
+    if not INPUT_MODE and not SCROLL_MODE:
         if ear <= EYE_AR_THRESH:
             EYE_COUNTER += 1
-            print('Eyes_closed_once')
+            # print('Eyes_closed_once')
             if EYE_COUNTER > EYE_AR_CONSECUTIVE_FRAMES:
-                SCROLL_MODE = not SCROLL_MODE
+                SCROLL_MODE = True#not SCROLL_MODE
                 EYE_COUNTER = 0
-                print('Scrolling_mode_Achieved!!!')                
+                set_FUTURE()                
+                ANCHOR_POINT = nose_point
+                print('Scrolling_mode_Activated!!!')                
         else:
             EYE_COUNTER = 0
         # WINK_COUNTER = 0
@@ -215,7 +229,6 @@ while True:
                 ANCHOR_POINT = nose_point
         else:
             MOUTH_COUNTER = 0
-
 
     # movement for mouse
     if INPUT_MODE:
@@ -251,6 +264,19 @@ while True:
     # for scrolling
     if SCROLL_MODE:
         cv2.putText(frame, 'SCROLLING', (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, RED_COLOR, 2)
+        x, y =ANCHOR_POINT
+        nx, ny = nose_point
+        w, h = 60, 35
+        multiple = 1
+        cv2.rectangle(frame, (x - w, y - h), (x + w, y + h), GREEN_COLOR, 2)
+        cv2.line(frame, ANCHOR_POINT, nose_point, BLUE_COLOR, 2)
+
+        dir = direction(nose_point, ANCHOR_POINT, w, h)
+        cv2.putText(frame, dir.upper(), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.7, RED_COLOR, 2)
+        if dir == 'up':
+            pag.scroll(10)
+        elif dir == 'down':
+            pag.scroll(-10)
 
     cv2.imshow("Frame", frame)
     key = cv2.waitKey(1) & 0xFF
