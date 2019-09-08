@@ -12,7 +12,7 @@ Download all folder(try over wifi as model folder is big)
 # command for gestures
 ```bash
 1 Open mouth for activating/deactivating mouse movement.
-2 Tilt your neck towards  for right click.
+2 Tilt your neck towards right for right click.
 3 Wink-Left eye for left click.
 4 Close eye for activating Scroll Mode.
 5 Move your Head in direction of required movement.
