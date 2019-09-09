@@ -118,7 +118,7 @@ if __name__  == "__main__" :
         frame = imutils.resize(frame, width=cam_w, height=cam_h)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        # Detect faces in the grayscale frame
+        # Detect faces in grayscale frame
         rects = detector(gray, 0)
 
         # Loop over the face detections
