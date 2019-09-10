@@ -55,6 +55,7 @@ unit_w = resolution_w / cam_w
 unit_h = resolution_h / cam_h
 continue_drag=0
 
+
 def eye_aspect_ratio(eye):
     # Compute the euclidean distances between the two sets of
     # vertical eye landmarks (x, y)-coordinates
