@@ -107,6 +107,7 @@ def setAnchor(nx,ny):
 
 
 if __name__  == "__main__" :
+    
     global counter_drag
     while True:
 
