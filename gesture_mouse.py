@@ -32,7 +32,7 @@ GREEN_COLOR = (0, 255, 0)
 BLUE_COLOR = (255, 0, 0)
 BLACK_COLOR = (0, 0, 0)
 
-# Initialize Dlib's face detector (HOG-based) and then create
+# Initialize Dlib's face detector (HOG-based) and then create it
 # the facial landmark predictor
 shape_predictor = "model/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
