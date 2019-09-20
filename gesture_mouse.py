@@ -5,7 +5,8 @@ import pyautogui as pag
 import imutils
 import dlib
 import cv2
-
+ 
+    
 # Thresholds and consecutisve frame length for triggering the mouse action.
 MOUTH_AR_THRESH = 0.6
 MOUTH_AR_CONSECUTIVE_FRAMES = 15
