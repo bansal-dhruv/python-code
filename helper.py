@@ -1,6 +1,5 @@
 import numpy as np
 
-
 # Returns EAR given eye landmarks
 def eye_aspect_ratio(eye):
     # Compute the euclidean distances between the two sets of
