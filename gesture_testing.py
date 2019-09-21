@@ -7,7 +7,6 @@ import dlib
 import cv2
 import math
 
-
 MOUTH_AR_THRESH = 0.3
 MOUTH_AR_CONSECUTIVE_FRAMES = 15 # 20
 EYE_AR_THRESH = 0.19
