@@ -42,6 +42,7 @@ predictor = dlib.shape_predictor(shape_predictor)
 
 # Grab the indexes of the facial landmarks for the left and
 # right eye, nose and mouth respectively
+
 (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
 (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
 (nStart, nEnd) = face_utils.FACIAL_LANDMARKS_IDXS["nose"]
