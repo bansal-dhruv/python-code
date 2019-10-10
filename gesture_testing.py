@@ -7,6 +7,10 @@ import dlib
 import cv2
 import math
 
+# settings
+pag.FAILSAFE = False
+
+# default values
 MOUTH_AR_THRESH = 0.3
 MOUTH_AR_CONSECUTIVE_FRAMES = 15 # 20
 EYE_AR_THRESH = 0.19
@@ -15,7 +19,7 @@ WINK_AR_DIFF_THRESH = 0.04
 WINK_AR_CLOSE_THRESH = 0.19
 WINK_CONSECUTIVE_FRAMES = 10
 
-DRAG_LIST=[1,1,1,5,5,5,10,10,10,10,10,10,15,15,15,15,20]
+DRAG_LIST=[1,1,1,1,1,1,1,1,1,5,5,5,10,10,10,10,10,10,15,15,15,15,20,20]
 DEGREE_COUNTER = 0
 MOUTH_COUNTER = 0
 EYE_COUNTER = 0
@@ -106,6 +110,9 @@ def setAnchor(nx,ny):
 if __name__  == "__main__" :
     
     global counter_drag
+    global current_direction
+    current_direction = None
+    # loop start
     while True:
 
         if SCROLL_MODE :
@@ -169,7 +176,7 @@ if __name__  == "__main__" :
 
         # Right click or left click
         # done !!!!!!!!!!
-        if (not INPUT_MODE ) or (not SCROLL_MODE) :
+        if ( INPUT_MODE ) and (not SCROLL_MODE) :
             if degrees<=66:
                 if DEGREE_COUNTER>=5 :
                     pag.click(button='right')
@@ -177,7 +184,7 @@ if __name__  == "__main__" :
                     DEGREE_COUNTER = 0
                 else :
                     DEGREE_COUNTER+=1
-            elif degrees>=96:
+            elif degrees>=106:
                 if DEGREE_COUNTER>=5 :
                     pag.click(button='left')
                     print("Left Click!")
@@ -207,7 +214,7 @@ if __name__  == "__main__" :
 
         # Scrolling Mode !!!!
         # done!!!
-        if not INPUT_MODE and not SCROLL_MODE:
+        if (not INPUT_MODE) and (not SCROLL_MODE):
             if ear <= EYE_AR_THRESH:
                 EYE_COUNTER += 1
                 # print('Eyes_closed_once')
@@ -250,28 +257,44 @@ if __name__  == "__main__" :
             cv2.putText(frame, dir.upper(), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.7, RED_COLOR, 2)
 
             drag = 10
-            if(continue_drag>=16):
-                continue_drag=16
+            if(continue_drag>=len(DRAG_LIST)-1):
+                continue_drag=len(DRAG_LIST)-2
 
             if dir == 'right':
+                if current_direction!='right':
+                    continue_drag=0
+                    current_direction='right'
                 pag.moveRel(DRAG_LIST[continue_drag], 0)
             elif dir == 'left':
+                if current_direction!='left':
+                    continue_drag=0
+                    current_direction='left'
                 pag.moveRel(-DRAG_LIST[continue_drag], 0)
             elif dir == 'up':
+                if current_direction!='up':
+                    continue_drag=0
+                    current_direction='up'
                 if SCROLL_MODE:
                     pag.scroll(40)
                 else:
                     pag.moveRel(0,-DRAG_LIST[continue_drag])
             elif dir == 'down':
+                if current_direction!='down':
+                    continue_drag=0
+                    current_direction='down'
                 if SCROLL_MODE:
                     pag.scroll(-40)
                 else:
                     pag.moveRel(0,DRAG_LIST[continue_drag])
+            else :
+                current_direction=None
+                continue_drag=0
             # setAnchor(nx, ny)
             print(ANCHOR_POINT ," ", nose_point)
             continue_drag+=1
         else:
             continue_drag=0
+
         # for scrolling
         if SCROLL_MODE:
             cv2.putText(frame, 'SCROLLING', (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, RED_COLOR, 2)
@@ -299,4 +322,3 @@ if __name__  == "__main__" :
 
     cv2.destroyAllWindows()
     vid.release()
-
