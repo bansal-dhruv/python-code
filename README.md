@@ -1,6 +1,6 @@
 # Face_Gesture
 ```bash
-This helps in controlling mouse through your facial landmarks.
+This helps in controlling mouse through your Facial Landmarks.
 ```
 # How to run
 ```bash
