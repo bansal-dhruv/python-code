@@ -1,6 +1,7 @@
 # Face_Gesture
 ```bash
 This helps in controlling mouse through your Facial Landmarks.
+This model identifies 68 unique points on the face.
 ```
 # How to run
 ```bash
