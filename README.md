@@ -1,6 +1,6 @@
 # Face_Gesture
 ```bash
-This helps in controlling mouse through your Facial Landmarks.
+This helps in controlling mouse through your facial Landmarks.
 This model identifies 68 unique points on the face.
 ```
 # How to run
@@ -16,11 +16,11 @@ Download all folder(try over wifi as model folder is large).
 2. Tilt your neck towards right for right click.
 3. Tilt your neck towards left for Left click.
 4. Close eye for activating Scroll mode which remain activated for 10 seconds.
-5. Move your Head in direction of required movement.
+5. Move your Head in direction of required movement .
 ```
 ## Sample ;)
 <img src="Sample/example.gif">
 
-## Push request are welcome 
+## Push request are welcome  
 
 
