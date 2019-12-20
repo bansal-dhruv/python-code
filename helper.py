@@ -53,3 +53,4 @@ def direction(nose_point, anchor_point, w, h, multiple=1):
         return 'up'
 
     return '-'
+  
