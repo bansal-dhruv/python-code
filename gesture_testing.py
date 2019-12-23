@@ -9,7 +9,7 @@ import cv2
 import math
 
 # settings
-pag.FAILSAFE = False
+pag.FAILSAFE = False 
 
 # default values
 MOUTH_AR_THRESH = 0.3
