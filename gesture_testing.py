@@ -7,7 +7,6 @@ import imutils
 import dlib
 import cv2  
 import math
-
 # settings
 pag.FAILSAFE = False 
 
