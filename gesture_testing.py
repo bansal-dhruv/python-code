@@ -322,4 +322,4 @@ if __name__  == "__main__" :
 
 
     cv2.destroyAllWindows()
-    vid.release()
+    vid.release() 
