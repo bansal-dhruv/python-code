@@ -5,7 +5,7 @@ import numpy as np
 import pyautogui as pag
 import imutils
 import dlib
-import cv2
+import cv2  
 import math
 
 # settings
