@@ -13,7 +13,7 @@ This model identifies 68 unique points on the face .
              
 # command for gestures  
 ```bash
-1. Open mouth for activating/deactivating mouse movement.
+1. Open mouth for activating/deactivating mouse movement.   
 2. Tilt your neck towards right for right click.
 3. Tilt your neck towards left for Left click.
 4. Close eye for activating Scroll mode which remain activated for 10 seconds.
