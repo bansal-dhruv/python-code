@@ -11,7 +11,7 @@ This model identifies 68 unique points on the face .
 ##### Run command on cmd  python gesture_mouse.py                  
       
              
-# command for gestures        
+# command for gestures           
 ```bash
 1. Open mouth for activating/deactivating mouse movement.      
 2. Tilt your neck towards right for right click.          
