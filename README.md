@@ -9,7 +9,7 @@ This model identifies 68 unique points on the face .
    Download all folder(try over wifi as model folder is large).                                                  
 ```      
 ##### Run command on cmd  python gesture_mouse.py           
-             
+              
 # command for gestures           
 ```bash
 1. Open mouth for activating/deactivating mouse movement .      
