@@ -22,6 +22,6 @@ This model identifies 68 unique points on the face .
 ## Sample :)
 <img src="Sample/example.gif">   
                         
-## Push request are welcome
+## Push request are welcome 
   
      
