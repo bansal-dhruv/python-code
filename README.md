@@ -3,11 +3,11 @@
                      
 ```bash              
 This helps in controlling mouse through your facial landmarks.  
-This model identifies 68 unique points on the face .                                 
+This model identifies 68 unique points on the face .                                             
 ```           
 # How to run                       
 ```bash                              
-   Download all folder(try over wifi as model folder is large).                                                  
+   Download all folder(try over wifi as model folder is large).                                                    
 ```      
 ##### Run command on cmd  python gesture_mouse.py           
    
